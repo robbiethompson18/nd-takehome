@@ -5,3 +5,12 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Local Claude config — machine/personal-specific, not shared
+CLAUDE.local.md
+.claude/notes/local/
+
+# Standard OS/editor noise
+*.swp
+.idea/
+.vscode/
