@@ -67,7 +67,7 @@ Pretrain-only = `ckpts/stage1_nope.pt`, greedy, one attempt per theorem.
 | Verifier rejections by reason | bad line cite 2,818 of 3,553 (79%); then final-formula-not-conclusion 208, parse error 198, rule check failed 153, bad box cite 149, ends-inside-subproof 27 | `charts/error_breakdown.csv` (chart 4); NoPE + RoPE pooled over both pools |
 | Solves whose written length equals the generating length | 80% at label 7, 15% at label 8, 0% at label 9 and beyond | `charts/solved_lengths.csv` (chart 5) |
 | NoPE vs RoPE, held-out | 99.55% vs 99.75%, a 0.2pp gap against ~0.15pp SE | the two `extra.final` blocks above |
-| NoPE vs RoPE, pools | 4.5% vs 4.0% (RL targets), 4.9% vs 4.7% (transfer); frontier 7 for both | `score_pool.py` on the corresponding prove.py outputs |
+| NoPE vs RoPE, pools | RL targets 42/930 = 4.5% vs 37/930 = 4.0%; transfer 46/931 = 4.9% vs 44/931 = 4.7%; frontier 7 for both | `score_pool.py` on `logs/p_pretrain_{rl_targets,transfer}.jsonl` (NoPE) and `logs/p_pretrain_rope_{rl_targets,transfer}.jsonl` (RoPE) |
 
 ## Stage 2: expert iteration
 
