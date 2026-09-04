@@ -1,0 +1,224 @@
+reusing warm pod nd-harvest-nope (qav1qghke3co20) at $3.49/hr
+ssh -p 18593 root@103.207.149.153   (up after 0s)
+$ tar czf - --exclude ./.git --exclude ./.venv --exclude ./logs --exclude ./__pycache__ . | ssh -p 18593 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 "mkdir -p /workspace/nd/ckpts /workspace/nd/logs /workspace/nd/data/harvest && tar xzf - -C /workspace/nd"
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+$ ssh -p 18593 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 bash -lc 'set -e
+cd /workspace/nd
+CKPT=ckpts/frozen/stage1_nope.pt
+for R in 1 2 3; do
+  echo "############################## ROUND $R ##############################"
+  echo "--- harvest with current model ---"
+  python harvest.py --ckpt $CKPT --in data/long/rl_targets.jsonl --k 32 --temperature 1.0 \
+    --seed $R --batch 2048 --out data/harvest/r$R.jsonl 2>&1 | tail -5
+  echo "--- FROZEN-MODEL CONTROL, same attempt budget, no retraining ---"
+  python harvest.py --ckpt ckpts/frozen/stage1_nope.pt --in data/long/rl_targets.jsonl --k 32 \
+    --temperature 1.0 --seed $((100+R)) --batch 2048 --out data/harvest/ctrl_r$R.jsonl 2>&1 | tail -4
+  python merge_harvest.py data/harvest/nope.jsonl data/harvest/rope.jsonl data/harvest/r[1-9].jsonl --out data/harvest/all.jsonl
+  echo "--- fine-tune from the FROZEN base on the cumulative harvest (STaR-style restart) ---"
+  python train.py --init ckpts/frozen/stage1_nope.pt --extra data/harvest/all.jsonl --extra-frac 0.5 \
+    --lr 1e-4 --steps 400 --batch 512 --warmup 20 --eval-every 400 --eval-n 600 \
+    --out ckpts/stage2_r$R.pt 2>&1 | grep -E "^initialised|^3.17M|FINAL"
+  CKPT=ckpts/stage2_r$R.pt
+  for POOL in rl_targets transfer; do
+    python prove.py --ckpt $CKPT --in data/long/$POOL.jsonl --out logs/p_r${R}_$POOL.jsonl --greedy --max-new 400 >/dev/null
+    python score_pool.py --proofs logs/p_r${R}_$POOL.jsonl --pool data/long/$POOL.jsonl --label "ROUND $R $POOL"
+  done
+  python prove.py --ckpt $CKPT --in data/heldout.jsonl --out logs/p_r${R}_heldout.jsonl --greedy --max-new 220 >/dev/null
+  python score_pool.py --proofs logs/p_r${R}_heldout.jsonl --pool data/heldout.jsonl --label "ROUND $R heldout"
+done'
+############################## ROUND 1 ##############################
+--- harvest with current model ---
+ckpts/frozen/stage1_nope.pt  k=32  T=1.0  attempts=29760
+FROZEN-MODEL CONTROL: 65/930 distinct theorems solved
+kept 71 distinct verified proofs; by written length {4: 2, 5: 10, 6: 14, 7: 42, 8: 3}
+robust frontier (>=5 distinct verified) = 7
+wrote data/harvest/r1.jsonl
+--- FROZEN-MODEL CONTROL, same attempt budget, no retraining ---
+FROZEN-MODEL CONTROL: 75/930 distinct theorems solved
+kept 82 distinct verified proofs; by written length {4: 2, 5: 12, 6: 17, 7: 48, 8: 3}
+robust frontier (>=5 distinct verified) = 7
+wrote data/harvest/ctrl_r1.jsonl
+merged 3 files -> 103 distinct proofs over 82 theorems
+  by written length {4: 3, 5: 14, 6: 21, 7: 60, 8: 5}
+  cumulative harvest frontier = 8
+  wrote data/harvest/all.jsonl
+--- fine-tune from the FROZEN base on the cumulative harvest (STaR-style restart) ---
+initialised from ckpts/frozen/stage1_nope.pt
+3.17M params | pos=nope | 144146 train / 2111 val | device=cuda | epochs=1.4 | extra 103 at 50% of batch (256/batch, each seen ~994x)
+FINAL (full held-out) solve 0.991 [0.987,0.995] n=2111 | 2:400/400  3:397/400  4:406/408  5:422/426  6:468/477 | flat 1891/1898 boxed 202/213
+ROUND 1 rl_targets vs data/long/rl_targets.jsonl
+  solved 97/930 = 0.1043  [0.0863,0.1256]
+  by gen_lines: 7:56/100 8:18/100 9:6/100 10:2/100 11:3/100 12:1/100 13:1/100 14:3/100 15:5/100 16:2/30
+  verified, by length WRITTEN: {4: 2, 5: 11, 6: 18, 7: 58, 8: 8}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 692, 'final formula is not the conclusion': 35, 'bad box cite': 30, 'rule check failed: ANDE2': 22}
+ROUND 1 transfer vs data/long/transfer.jsonl
+  solved 79/931 = 0.0849  [0.0686,0.1045]
+  by gen_lines: 7:40/100 8:15/100 9:6/100 10:6/100 11:1/100 12:2/100 13:1/100 14:5/100 15:2/100 16:1/31
+  verified, by length WRITTEN: {4: 1, 5: 9, 6: 24, 7: 41, 8: 4}
+  ROBUST FRONTIER (>=5 distinct verified) = 7
+  failures: {'bad line cite': 697, 'final formula is not the conclusion': 46, 'bad box cite': 28, 'rule check failed: ANDE1': 25}
+ROUND 1 heldout vs data/heldout.jsonl
+  solved 2093/2111 = 0.9915  [0.9866,0.9946]
+  by gen_lines: 2:400/400 3:397/400 4:406/408 5:422/426 6:468/477
+  verified, by length WRITTEN: {2: 397, 3: 395, 4: 434, 5: 413, 6: 453, 7: 1}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'bad line cite': 7, 'bad box cite': 7, 'rule check failed: ANDE2': 2, 'rule check failed: IMPE': 1}
+############################## ROUND 2 ##############################
+--- harvest with current model ---
+ckpts/stage2_r1.pt  k=32  T=1.0  attempts=29760
+FROZEN-MODEL CONTROL: 115/930 distinct theorems solved
+kept 144 distinct verified proofs; by written length {4: 3, 5: 18, 6: 28, 7: 82, 8: 13}
+robust frontier (>=5 distinct verified) = 8
+wrote data/harvest/r2.jsonl
+--- FROZEN-MODEL CONTROL, same attempt budget, no retraining ---
+FROZEN-MODEL CONTROL: 66/930 distinct theorems solved
+kept 73 distinct verified proofs; by written length {4: 2, 5: 10, 6: 14, 7: 43, 8: 4}
+robust frontier (>=5 distinct verified) = 7
+wrote data/harvest/ctrl_r2.jsonl
+merged 4 files -> 144 distinct proofs over 115 theorems
+  by written length {4: 3, 5: 18, 6: 28, 7: 82, 8: 13}
+  cumulative harvest frontier = 8
+  wrote data/harvest/all.jsonl
+--- fine-tune from the FROZEN base on the cumulative harvest (STaR-style restart) ---
+initialised from ckpts/frozen/stage1_nope.pt
+3.17M params | pos=nope | 144146 train / 2111 val | device=cuda | epochs=1.4 | extra 144 at 50% of batch (256/batch, each seen ~711x)
+FINAL (full held-out) solve 0.990 [0.985,0.993] n=2111 | 2:400/400  3:397/400  4:406/408  5:422/426  6:465/477 | flat 1891/1898 boxed 199/213
+ROUND 2 rl_targets vs data/long/rl_targets.jsonl
+  solved 120/930 = 0.1290  [0.1090,0.1521]
+  by gen_lines: 7:66/100 8:21/100 9:8/100 10:3/100 11:4/100 12:1/100 13:3/100 14:5/100 15:7/100 16:2/30
+  verified, by length WRITTEN: {4: 1, 5: 13, 6: 22, 7: 74, 8: 10}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 656, 'final formula is not the conclusion': 49, 'rule check failed: ANDE1': 27, 'bad box cite': 22}
+ROUND 2 transfer vs data/long/transfer.jsonl
+  solved 89/931 = 0.0956  [0.0783,0.1162]
+  by gen_lines: 7:44/100 8:17/100 9:7/100 10:6/100 11:1/100 12:3/100 13:1/100 14:5/100 15:3/100 16:2/31
+  verified, by length WRITTEN: {4: 1, 5: 10, 6: 27, 7: 46, 8: 5}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 680, 'final formula is not the conclusion': 53, 'rule check failed: ANDE1': 33, 'rule check failed: ANDE2': 25}
+ROUND 2 heldout vs data/heldout.jsonl
+  solved 2090/2111 = 0.9901  [0.9848,0.9935]
+  by gen_lines: 2:400/400 3:397/400 4:406/408 5:422/426 6:465/477
+  verified, by length WRITTEN: {2: 397, 3: 396, 4: 432, 5: 414, 6: 450, 7: 1}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'bad line cite': 10, 'bad box cite': 7, 'rule check failed: ANDE2': 2, 'rule check failed: IMPE': 1}
+############################## ROUND 3 ##############################
+--- harvest with current model ---
+ckpts/stage2_r2.pt  k=32  T=1.0  attempts=29760
+FROZEN-MODEL CONTROL: 134/930 distinct theorems solved
+kept 164 distinct verified proofs; by written length {4: 3, 5: 18, 6: 29, 7: 93, 8: 21}
+robust frontier (>=5 distinct verified) = 8
+wrote data/harvest/r3.jsonl
+--- FROZEN-MODEL CONTROL, same attempt budget, no retraining ---
+FROZEN-MODEL CONTROL: 64/930 distinct theorems solved
+kept 71 distinct verified proofs; by written length {4: 2, 5: 10, 6: 15, 7: 41, 8: 3}
+robust frontier (>=5 distinct verified) = 7
+wrote data/harvest/ctrl_r3.jsonl
+merged 5 files -> 164 distinct proofs over 134 theorems
+  by written length {4: 3, 5: 18, 6: 29, 7: 93, 8: 21}
+  cumulative harvest frontier = 8
+  wrote data/harvest/all.jsonl
+--- fine-tune from the FROZEN base on the cumulative harvest (STaR-style restart) ---
+initialised from ckpts/frozen/stage1_nope.pt
+3.17M params | pos=nope | 144146 train / 2111 val | device=cuda | epochs=1.4 | extra 164 at 50% of batch (256/batch, each seen ~624x)
+FINAL (full held-out) solve 0.990 [0.985,0.993] n=2111 | 2:400/400  3:397/400  4:405/408  5:423/426  6:465/477 | flat 1891/1898 boxed 199/213
+ROUND 3 rl_targets vs data/long/rl_targets.jsonl
+  solved 135/930 = 0.1452  [0.1240,0.1693]
+  by gen_lines: 7:69/100 8:25/100 9:10/100 10:4/100 11:4/100 12:2/100 13:3/100 14:7/100 15:9/100 16:2/30
+  verified, by length WRITTEN: {4: 1, 5: 13, 6: 24, 7: 79, 8: 18}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 651, 'final formula is not the conclusion': 40, 'bad box cite': 23, 'rule check failed: ANDE1': 20}
+ROUND 3 transfer vs data/long/transfer.jsonl
+  solved 97/931 = 0.1042  [0.0862,0.1255]
+  by gen_lines: 7:46/100 8:20/100 9:6/100 10:7/100 11:2/100 12:3/100 13:1/100 14:5/100 15:4/100 16:3/31
+  verified, by length WRITTEN: {4: 2, 5: 8, 6: 27, 7: 51, 8: 9}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 682, 'final formula is not the conclusion': 48, 'bad box cite': 30, 'rule check failed: ANDE1': 29}
+ROUND 3 heldout vs data/heldout.jsonl
+  solved 2090/2111 = 0.9901  [0.9848,0.9935]
+  by gen_lines: 2:400/400 3:397/400 4:405/408 5:423/426 6:465/477
+  verified, by length WRITTEN: {2: 398, 3: 396, 4: 430, 5: 414, 6: 451, 7: 1}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'bad line cite': 10, 'bad box cite': 7, 'rule check failed: ANDE2': 2, 'rule check failed: IMPE': 1}
+$ ssh -p 18593 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 "cd /workspace/nd && tar czf - ckpts logs data/harvest" | tar xzf - -C .
+pod nd-harvest-nope (qav1qghke3co20) LEFT RUNNING at $3.49/hr — reuse with --reuse nd-harvest-nope, kill with --kill nd-harvest-nope

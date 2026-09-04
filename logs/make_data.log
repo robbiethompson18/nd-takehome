@@ -1,0 +1,8 @@
+144787 theorems in 900s (11275764 tries), 100 dropped for appearing in targets/ (821 sequents banned)
+  len 2:   7169 train   400 val | trivial  8.4% | depth {0: 7563, 1: 6} | body tokens med 32  SHORT of 40000
+  len 3:  16818 train   400 val | trivial  0.0% | depth {0: 17176, 1: 42} | body tokens med 39  SHORT of 40000
+  len 4:  39600 train   400 val | trivial  0.1% | depth {0: 38564, 1: 1420, 2: 16} | body tokens med 38
+  len 5:  39600 train   400 val | trivial  0.1% | depth {0: 36020, 1: 3975, 2: 5} | body tokens med 47
+  len 6:  39600 train   400 val | trivial  0.1% | depth {0: 35052, 1: 4875, 2: 73} | body tokens med 49
+wrote data/train.jsonl  (142787 records)
+wrote data/val.jsonl  (2000 records)

@@ -1,0 +1,136 @@
+pod 5381oly2lquy6g at $3.49/hr
+ssh -p 15688 root@103.207.149.153   (up after 29s)
+$ tar czf - --exclude ./.git --exclude ./.venv --exclude ./ckpts --exclude ./logs --exclude ./__pycache__ . | ssh -p 15688 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 "mkdir -p /workspace/nd/ckpts /workspace/nd/logs && tar xzf - -C /workspace/nd"
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+$ ssh -p 15688 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 bash -lc '
+set -e
+cd /workspace/nd
+python test_ndtok.py
+nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
+wc -l data/train.jsonl data/heldout.jsonl
+python train.py --pos nope --batch 1024 --steps 6000 --lr 0.001 --seed 0   --eval-every 1000 --out ckpts/stage1_nope.pt 2>&1 | tee logs/stage1_nope.log
+'
+57 proofs round-trip OK; body tokens spec 4660 -> compact 3977
+edge cases OK
+canonicalisation OK
+pruner OK
+NVIDIA H100 80GB HBM3, 81559 MiB
+  142118 data/train.jsonl
+    2000 data/heldout.jsonl
+  144118 total
+3.17M params | pos=nope | 142118 train / 2000 val | device=cuda | epochs=43.2
+step   100  ep   0.7  train 0.9824  val 0.9260  lr 5.00e-04  49 ms/step
+step   200  ep   1.4  train 0.5493  val 0.4952  lr 9.98e-04  46 ms/step
+step   300  ep   2.2  train 0.1574  val 0.1047  lr 9.94e-04  45 ms/step
+step   400  ep   2.9  train 0.0633  val 0.0299  lr 9.90e-04  45 ms/step
+step   500  ep   3.6  train 0.0327  val 0.0144  lr 9.85e-04  45 ms/step
+step   600  ep   4.3  train 0.0221  val 0.0122  lr 9.78e-04  45 ms/step
+step   700  ep   5.0  train 0.0144  val 0.0087  lr 9.70e-04  44 ms/step
+step   800  ep   5.8  train 0.0147  val 0.0097  lr 9.61e-04  44 ms/step
+step   900  ep   6.5  train 0.0089  val 0.0165  lr 9.51e-04  44 ms/step
+step  1000  ep   7.2  train 0.0116  val 0.0058  lr 9.40e-04  44 ms/step
+  [eval @ 1000] solve 0.969 [0.956,0.978] n=1000 | 2:388/400  3:387/400  4:194/200 | flat 964/993 boxed 5/7  reasons [('bad line cite', 23), ('rule check failed: ANDE2', 3), ('bad box cite', 2), ('rule check failed: ANDE1', 2), ("parse: expected line index, got '", 1)]
+step  1100  ep   7.9  train 0.0131  val 0.0086  lr 9.27e-04  46 ms/step
+step  1200  ep   8.6  train 0.0220  val 0.0143  lr 9.14e-04  45 ms/step
+step  1300  ep   9.4  train 0.0076  val 0.0053  lr 9.00e-04  45 ms/step
+step  1400  ep  10.1  train 0.0094  val 0.0052  lr 8.84e-04  45 ms/step
+step  1500  ep  10.8  train 0.0073  val 0.0048  lr 8.68e-04  45 ms/step
+step  1600  ep  11.5  train 0.0067  val 0.0041  lr 8.51e-04  45 ms/step
+step  1700  ep  12.2  train 0.0062  val 0.0038  lr 8.33e-04  45 ms/step
+step  1800  ep  13.0  train 0.0066  val 0.0034  lr 8.15e-04  45 ms/step
+step  1900  ep  13.7  train 0.0060  val 0.0036  lr 7.95e-04  45 ms/step
+step  2000  ep  14.4  train 0.0050  val 0.0033  lr 7.75e-04  45 ms/step
+  [eval @ 2000] solve 0.992 [0.984,0.996] n=1000 | 2:396/400  3:396/400  4:200/200 | flat 985/993 boxed 7/7  reasons [('bad line cite', 5), ('bad box cite', 3)]
+step  2100  ep  15.1  train 0.0062  val 0.0030  lr 7.54e-04  45 ms/step
+step  2200  ep  15.9  train 0.0064  val 0.0032  lr 7.33e-04  45 ms/step
+step  2300  ep  16.6  train 0.0041  val 0.0030  lr 7.11e-04  45 ms/step
+step  2400  ep  17.3  train 0.0049  val 0.0024  lr 6.89e-04  45 ms/step
+step  2500  ep  18.0  train 0.0052  val 0.0026  lr 6.66e-04  45 ms/step
+step  2600  ep  18.7  train 0.0042  val 0.0025  lr 6.44e-04  45 ms/step
+step  2700  ep  19.5  train 0.0049  val 0.0025  lr 6.20e-04  45 ms/step
+step  2800  ep  20.2  train 0.0044  val 0.0024  lr 5.97e-04  45 ms/step
+step  2900  ep  20.9  train 0.0040  val 0.0070  lr 5.74e-04  45 ms/step
+step  3000  ep  21.6  train 0.0040  val 0.0020  lr 5.50e-04  45 ms/step
+  [eval @ 3000] solve 0.998 [0.993,0.999] n=1000 | 2:400/400  3:399/400  4:199/200 | flat 992/993 boxed 6/7  reasons [('final formula is not the conclusion', 1), ('bad line cite', 1)]
+step  3100  ep  22.3  train 0.0035  val 0.0020  lr 5.26e-04  45 ms/step
+step  3200  ep  23.1  train 0.0038  val 0.0023  lr 5.03e-04  45 ms/step
+step  3300  ep  23.8  train 0.0034  val 0.0025  lr 4.80e-04  45 ms/step
+step  3400  ep  24.5  train 0.0038  val 0.0021  lr 4.56e-04  45 ms/step
+step  3500  ep  25.2  train 0.0039  val 0.0019  lr 4.34e-04  45 ms/step
+step  3600  ep  25.9  train 0.0031  val 0.0021  lr 4.11e-04  45 ms/step
+step  3700  ep  26.7  train 0.0030  val 0.0022  lr 3.89e-04  45 ms/step
+step  3800  ep  27.4  train 0.0028  val 0.0019  lr 3.67e-04  45 ms/step
+step  3900  ep  28.1  train 0.0032  val 0.0018  lr 3.46e-04  45 ms/step
+step  4000  ep  28.8  train 0.0037  val 0.0027  lr 3.25e-04  45 ms/step
+  [eval @ 4000] solve 0.993 [0.986,0.997] n=1000 | 2:395/400  3:398/400  4:200/200 | flat 986/993 boxed 7/7  reasons [('bad line cite', 6), ('rule check failed: ANDE1', 1)]
+step  4100  ep  29.5  train 0.0024  val 0.0017  lr 3.05e-04  45 ms/step
+step  4200  ep  30.3  train 0.0030  val 0.0020  lr 2.85e-04  45 ms/step
+step  4300  ep  31.0  train 0.0034  val 0.0015  lr 2.67e-04  45 ms/step
+step  4400  ep  31.7  train 0.0028  val 0.0018  lr 2.49e-04  45 ms/step
+step  4500  ep  32.4  train 0.0035  val 0.0021  lr 2.32e-04  45 ms/step
+step  4600  ep  33.1  train 0.0026  val 0.0016  lr 2.16e-04  45 ms/step
+step  4700  ep  33.9  train 0.0031  val 0.0016  lr 2.00e-04  45 ms/step
+step  4800  ep  34.6  train 0.0027  val 0.0015  lr 1.86e-04  45 ms/step
+step  4900  ep  35.3  train 0.0028  val 0.0016  lr 1.73e-04  45 ms/step
+step  5000  ep  36.0  train 0.0024  val 0.0013  lr 1.60e-04  45 ms/step
+  [eval @ 5000] solve 0.998 [0.993,0.999] n=1000 | 2:400/400  3:398/400  4:200/200 | flat 991/993 boxed 7/7  reasons [('bad line cite', 1), ('rule check failed: ANDE2', 1)]
+step  5100  ep  36.7  train 0.0028  val 0.0017  lr 1.49e-04  45 ms/step
+step  5200  ep  37.5  train 0.0022  val 0.0020  lr 1.39e-04  45 ms/step
+step  5300  ep  38.2  train 0.0022  val 0.0013  lr 1.30e-04  45 ms/step
+step  5400  ep  38.9  train 0.0028  val 0.0018  lr 1.22e-04  45 ms/step
+step  5500  ep  39.6  train 0.0020  val 0.0016  lr 1.15e-04  45 ms/step
+step  5600  ep  40.3  train 0.0022  val 0.0021  lr 1.10e-04  45 ms/step
+step  5700  ep  41.1  train 0.0018  val 0.0021  lr 1.06e-04  45 ms/step
+step  5800  ep  41.8  train 0.0023  val 0.0017  lr 1.02e-04  45 ms/step
+step  5900  ep  42.5  train 0.0021  val 0.0021  lr 1.01e-04  45 ms/step
+step  6000  ep  43.2  train 0.0017  val 0.0020  lr 1.00e-04  45 ms/step
+  [eval @ 6000] solve 0.997 [0.991,0.999] n=1000 | 2:400/400  3:398/400  4:199/200 | flat 990/993 boxed 7/7  reasons [('bad line cite', 2), ('rule check failed: ANDE2', 1)]
+FINAL (full held-out) solve 0.996 [0.991,0.998] n=2000 | 2:400/400  3:398/400  4:399/400  5:398/400  6:396/400 | flat 1890/1898 boxed 101/102
+  len 2: 400/400 = 1.000  [0.990,1.000]
+  len 3: 398/400 = 0.995  [0.982,0.999]
+  len 4: 399/400 = 0.998  [0.986,1.000]
+  len 5: 398/400 = 0.995  [0.982,0.999]
+  len 6: 396/400 = 0.990  [0.975,0.996]
+wrote ckpts/stage1_nope.pt in 4.6 min
+$ ssh -p 15688 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 "cd /workspace/nd && tar czf - ckpts logs" | tar xzf - -C .
+terminated 5381oly2lquy6g after 5.9 min (~$0.34)

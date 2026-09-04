@@ -1,0 +1,21 @@
+  2048/29760 attempts, 30 distinct proofs, 27 theorems
+  4096/29760 attempts, 52 distinct proofs, 47 theorems
+  6144/29760 attempts, 63 distinct proofs, 56 theorems
+  8192/29760 attempts, 65 distinct proofs, 58 theorems
+  10240/29760 attempts, 65 distinct proofs, 58 theorems
+  12288/29760 attempts, 66 distinct proofs, 59 theorems
+  14336/29760 attempts, 69 distinct proofs, 62 theorems
+  16384/29760 attempts, 69 distinct proofs, 62 theorems
+  18432/29760 attempts, 70 distinct proofs, 63 theorems
+  20480/29760 attempts, 70 distinct proofs, 63 theorems
+  22528/29760 attempts, 70 distinct proofs, 63 theorems
+  24576/29760 attempts, 73 distinct proofs, 66 theorems
+  26624/29760 attempts, 76 distinct proofs, 68 theorems
+  28672/29760 attempts, 76 distinct proofs, 68 theorems
+  29760/29760 attempts, 77 distinct proofs, 69 theorems
+
+ckpts/frozen/stage1_nope.pt  k=32  T=1.0  attempts=29760
+FROZEN-MODEL CONTROL: 69/930 distinct theorems solved
+kept 77 distinct verified proofs; by written length {4: 2, 5: 10, 6: 13, 7: 49, 8: 3}
+robust frontier (>=5 distinct verified) = 7
+wrote data/harvest/nope.jsonl

@@ -1,0 +1,74 @@
+3.17M params | pos=rope | 142118 train / 2000 val | device=cuda | epochs=43.2
+step   100  ep   0.7  train 0.8377  val 0.8198  lr 5.00e-04  64 ms/step
+step   200  ep   1.4  train 0.2636  val 0.2114  lr 9.98e-04  62 ms/step
+step   300  ep   2.2  train 0.0523  val 0.0332  lr 9.94e-04  61 ms/step
+step   400  ep   2.9  train 0.0322  val 0.0168  lr 9.90e-04  60 ms/step
+step   500  ep   3.6  train 0.0350  val 0.0241  lr 9.85e-04  60 ms/step
+step   600  ep   4.3  train 0.0155  val 0.0126  lr 9.78e-04  60 ms/step
+step   700  ep   5.0  train 0.0121  val 0.0070  lr 9.70e-04  60 ms/step
+step   800  ep   5.8  train 0.0167  val 0.0085  lr 9.61e-04  60 ms/step
+step   900  ep   6.5  train 0.0088  val 0.0065  lr 9.51e-04  60 ms/step
+step  1000  ep   7.2  train 0.0085  val 0.0042  lr 9.40e-04  60 ms/step
+  [eval @ 1000] solve 0.969 [0.956,0.978] n=1000 | 2:387/400  3:389/400  4:193/200 | flat 964/993 boxed 5/7  reasons [('bad line cite', 21), ('final formula is not the conclusion', 4), ('rule check failed: ANDE2', 3), ('bad box cite', 2), ("parse: expected line index, got '", 1)]
+step  1100  ep   7.9  train 0.0073  val 0.0058  lr 9.27e-04  64 ms/step
+step  1200  ep   8.6  train 0.0083  val 0.0057  lr 9.14e-04  63 ms/step
+step  1300  ep   9.4  train 0.0074  val 0.0040  lr 9.00e-04  63 ms/step
+step  1400  ep  10.1  train 0.0058  val 0.0033  lr 8.84e-04  63 ms/step
+step  1500  ep  10.8  train 0.0061  val 0.0030  lr 8.68e-04  62 ms/step
+step  1600  ep  11.5  train 0.0054  val 0.0034  lr 8.51e-04  62 ms/step
+step  1700  ep  12.2  train 0.0057  val 0.0047  lr 8.33e-04  62 ms/step
+step  1800  ep  13.0  train 0.0067  val 0.0031  lr 8.15e-04  62 ms/step
+step  1900  ep  13.7  train 0.0089  val 0.0026  lr 7.95e-04  62 ms/step
+step  2000  ep  14.4  train 0.0043  val 0.0030  lr 7.75e-04  62 ms/step
+  [eval @ 2000] solve 0.993 [0.986,0.997] n=1000 | 2:394/400  3:400/400  4:199/200 | flat 986/993 boxed 7/7  reasons [('bad line cite', 3), ('bad box cite', 2), ('final formula is not the conclusion', 2)]
+step  2100  ep  15.1  train 0.0044  val 0.0020  lr 7.54e-04  62 ms/step
+step  2200  ep  15.9  train 0.0043  val 0.0027  lr 7.33e-04  62 ms/step
+step  2300  ep  16.6  train 0.0042  val 0.0020  lr 7.11e-04  62 ms/step
+step  2400  ep  17.3  train 0.0046  val 0.0023  lr 6.89e-04  62 ms/step
+step  2500  ep  18.0  train 0.0038  val 0.0023  lr 6.66e-04  62 ms/step
+step  2600  ep  18.7  train 0.0039  val 0.0026  lr 6.44e-04  62 ms/step
+step  2700  ep  19.5  train 0.0038  val 0.0023  lr 6.20e-04  62 ms/step
+step  2800  ep  20.2  train 0.0044  val 0.0019  lr 5.97e-04  62 ms/step
+step  2900  ep  20.9  train 0.0035  val 0.0025  lr 5.74e-04  61 ms/step
+step  3000  ep  21.6  train 0.0043  val 0.0025  lr 5.50e-04  61 ms/step
+  [eval @ 3000] solve 0.996 [0.990,0.998] n=1000 | 2:398/400  3:399/400  4:199/200 | flat 990/993 boxed 6/7  reasons [('bad line cite', 3), ('bad box cite', 1)]
+step  3100  ep  22.3  train 0.0028  val 0.0018  lr 5.26e-04  62 ms/step
+step  3200  ep  23.1  train 0.0032  val 0.0020  lr 5.03e-04  62 ms/step
+step  3300  ep  23.8  train 0.0035  val 0.0024  lr 4.80e-04  62 ms/step
+step  3400  ep  24.5  train 0.0029  val 0.0016  lr 4.56e-04  62 ms/step
+step  3500  ep  25.2  train 0.0033  val 0.0020  lr 4.34e-04  62 ms/step
+step  3600  ep  25.9  train 0.0025  val 0.0020  lr 4.11e-04  62 ms/step
+step  3700  ep  26.7  train 0.0026  val 0.0022  lr 3.89e-04  62 ms/step
+step  3800  ep  27.4  train 0.0026  val 0.0017  lr 3.67e-04  61 ms/step
+step  3900  ep  28.1  train 0.0028  val 0.0017  lr 3.46e-04  61 ms/step
+step  4000  ep  28.8  train 0.0033  val 0.0027  lr 3.25e-04  61 ms/step
+  [eval @ 4000] solve 0.998 [0.993,0.999] n=1000 | 2:399/400  3:400/400  4:199/200 | flat 991/993 boxed 7/7  reasons [('final formula is not the conclusion', 1), ('bad line cite', 1)]
+step  4100  ep  29.5  train 0.0021  val 0.0017  lr 3.05e-04  62 ms/step
+step  4200  ep  30.3  train 0.0024  val 0.0020  lr 2.85e-04  62 ms/step
+step  4300  ep  31.0  train 0.0028  val 0.0016  lr 2.67e-04  62 ms/step
+step  4400  ep  31.7  train 0.0023  val 0.0019  lr 2.49e-04  62 ms/step
+step  4500  ep  32.4  train 0.0027  val 0.0019  lr 2.32e-04  62 ms/step
+step  4600  ep  33.1  train 0.0022  val 0.0019  lr 2.16e-04  61 ms/step
+step  4700  ep  33.9  train 0.0025  val 0.0019  lr 2.00e-04  61 ms/step
+step  4800  ep  34.6  train 0.0024  val 0.0020  lr 1.86e-04  61 ms/step
+step  4900  ep  35.3  train 0.0022  val 0.0020  lr 1.73e-04  61 ms/step
+step  5000  ep  36.0  train 0.0021  val 0.0017  lr 1.60e-04  61 ms/step
+  [eval @ 5000] solve 0.998 [0.993,0.999] n=1000 | 2:399/400  3:399/400  4:200/200 | flat 991/993 boxed 7/7  reasons [('bad line cite', 2)]
+step  5100  ep  36.7  train 0.0023  val 0.0023  lr 1.49e-04  62 ms/step
+step  5200  ep  37.5  train 0.0019  val 0.0021  lr 1.39e-04  62 ms/step
+step  5300  ep  38.2  train 0.0017  val 0.0015  lr 1.30e-04  62 ms/step
+step  5400  ep  38.9  train 0.0021  val 0.0022  lr 1.22e-04  61 ms/step
+step  5500  ep  39.6  train 0.0016  val 0.0021  lr 1.15e-04  61 ms/step
+step  5600  ep  40.3  train 0.0015  val 0.0023  lr 1.10e-04  61 ms/step
+step  5700  ep  41.1  train 0.0014  val 0.0026  lr 1.06e-04  61 ms/step
+step  5800  ep  41.8  train 0.0014  val 0.0025  lr 1.02e-04  61 ms/step
+step  5900  ep  42.5  train 0.0016  val 0.0024  lr 1.01e-04  61 ms/step
+step  6000  ep  43.2  train 0.0012  val 0.0026  lr 1.00e-04  61 ms/step
+  [eval @ 6000] solve 0.999 [0.994,1.000] n=1000 | 2:399/400  3:400/400  4:200/200 | flat 992/993 boxed 7/7  reasons [('bad line cite', 1)]
+FINAL (full held-out) solve 0.998 [0.994,0.999] n=2000 | 2:399/400  3:400/400  4:400/400  5:400/400  6:396/400 | flat 1894/1898 boxed 101/102
+  len 2: 399/400 = 0.998  [0.986,1.000]
+  len 3: 400/400 = 1.000  [0.990,1.000]
+  len 4: 400/400 = 1.000  [0.990,1.000]
+  len 5: 400/400 = 1.000  [0.990,1.000]
+  len 6: 396/400 = 0.990  [0.975,0.996]
+wrote ckpts/stage1_rope.pt in 6.2 min

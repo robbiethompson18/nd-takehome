@@ -1,0 +1,206 @@
+reusing warm pod nd-harvest-nope (qav1qghke3co20) at $3.49/hr
+ssh -p 18593 root@103.207.149.153   (up after 0s)
+$ tar czf - --exclude ./.git --exclude ./.venv --exclude ./logs --exclude ./__pycache__ . | ssh -p 18593 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 "mkdir -p /workspace/nd/ckpts /workspace/nd/logs /workspace/nd/data/harvest && tar xzf - -C /workspace/nd"
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.provenance'
+$ ssh -p 18593 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 bash -lc 'set -e
+cd /workspace/nd
+echo "=== frozen Stage-1 baseline on the CURRENT heldout (2111, incl. depth>=2) ==="
+python prove.py --ckpt ckpts/frozen/stage1_nope.pt --in data/heldout.jsonl --out logs/p_frozen_heldout.jsonl --greedy --max-new 220
+python score_pool.py --proofs logs/p_frozen_heldout.jsonl --pool data/heldout.jsonl --label "FROZEN heldout"
+for F in 0.1 0.25 0.5; do
+  echo "######## extra-frac $F ########"
+  python train.py --init ckpts/frozen/stage1_nope.pt --extra data/harvest/merged.jsonl --extra-frac $F \
+    --lr 1e-4 --steps 400 --batch 512 --warmup 20 --eval-every 400 --eval-n 600 \
+    --out ckpts/stage2_nope_f$F.pt 2>&1 | tail -12
+  for POOL in rl_targets transfer; do
+    python prove.py --ckpt ckpts/stage2_nope_f$F.pt --in data/long/$POOL.jsonl --out logs/p_f${F}_$POOL.jsonl --greedy --max-new 400
+    python score_pool.py --proofs logs/p_f${F}_$POOL.jsonl --pool data/long/$POOL.jsonl --label "frac=$F $POOL"
+  done
+  python prove.py --ckpt ckpts/stage2_nope_f$F.pt --in data/heldout.jsonl --out logs/p_f${F}_heldout.jsonl --greedy --max-new 220
+  python score_pool.py --proofs logs/p_f${F}_heldout.jsonl --pool data/heldout.jsonl --label "frac=$F heldout"
+done'
+=== frozen Stage-1 baseline on the CURRENT heldout (2111, incl. depth>=2) ===
+wrote logs/p_frozen_heldout.jsonl (2111 proofs, temperature=0.0, ckpt=ckpts/frozen/stage1_nope.pt)
+FROZEN heldout vs data/heldout.jsonl
+  solved 1993/2111 = 0.9441  [0.9335,0.9531]
+  by gen_lines: 2:400/400 3:398/400 4:401/408 5:398/426 6:396/477
+  verified, by length WRITTEN: {2: 397, 3: 396, 4: 422, 5: 396, 6: 382}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'final formula is not the conclusion': 49, 'bad box cite': 24, 'proof ends inside a subproof': 22, 'bad line cite': 15}
+######## extra-frac 0.1 ########
+step   100  ep   0.4  train 0.0027  val 0.0034  lr 8.68e-05  28 ms/step
+step   200  ep   0.7  train 0.0026  val 0.0033  lr 5.50e-05  26 ms/step
+step   300  ep   1.1  train 0.0022  val 0.0034  lr 2.32e-05  25 ms/step
+step   400  ep   1.4  train 0.0027  val 0.0033  lr 1.00e-05  24 ms/step
+  [eval @ 400] solve 0.998 [0.991,1.000] n=600 | 2:134/134  3:133/133  4:133/133  5:134/134  6:65/66 | flat 574/575 boxed 25/25  reasons [('rule check failed: IMPE', 1)]
+FINAL (full held-out) solve 0.994 [0.989,0.996] n=2111 | 2:399/400  3:398/400  4:408/408  5:423/426  6:470/477 | flat 1891/1898 boxed 207/213
+  len 2: 399/400 = 0.998  [0.986,1.000]
+  len 3: 398/400 = 0.995  [0.982,0.999]
+  len 4: 408/408 = 1.000  [0.991,1.000]
+  len 5: 423/426 = 0.993  [0.980,0.998]
+  len 6: 470/477 = 0.985  [0.970,0.993]
+wrote ckpts/stage2_nope_f0.1.pt in 0.3 min
+wrote logs/p_f0.1_rl_targets.jsonl (930 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.1.pt)
+frac=0.1 rl_targets vs data/long/rl_targets.jsonl
+  solved 92/930 = 0.0989  [0.0814,0.1198]
+  by gen_lines: 7:54/100 8:17/100 9:5/100 10:1/100 11:3/100 12:1/100 13:1/100 14:3/100 15:5/100 16:2/30
+  verified, by length WRITTEN: {4: 1, 5: 10, 6: 18, 7: 58, 8: 5}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 701, 'final formula is not the conclusion': 39, 'bad box cite': 27, 'rule check failed: ANDE2': 17}
+wrote logs/p_f0.1_transfer.jsonl (931 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.1.pt)
+frac=0.1 transfer vs data/long/transfer.jsonl
+  solved 76/931 = 0.0816  [0.0657,0.1010]
+  by gen_lines: 7:39/100 8:14/100 9:5/100 10:6/100 11:1/100 12:2/100 13:1/100 14:5/100 15:2/100 16:1/31
+  verified, by length WRITTEN: {4: 1, 5: 7, 6: 22, 7: 42, 8: 4}
+  ROBUST FRONTIER (>=5 distinct verified) = 7
+  failures: {'bad line cite': 705, 'final formula is not the conclusion': 48, 'rule check failed: ANDE1': 24, 'bad box cite': 24}
+wrote logs/p_f0.1_heldout.jsonl (2111 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.1.pt)
+frac=0.1 heldout vs data/heldout.jsonl
+  solved 2098/2111 = 0.9938  [0.9895,0.9964]
+  by gen_lines: 2:399/400 3:398/400 4:408/408 5:423/426 6:470/477
+  verified, by length WRITTEN: {2: 396, 3: 397, 4: 432, 5: 415, 6: 457, 7: 1}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'bad line cite': 7, 'bad box cite': 2, "parse: expected line index, got '": 1, 'rule check failed: IMPE': 1}
+######## extra-frac 0.25 ########
+step   100  ep   0.4  train 0.0034  val 0.0035  lr 8.68e-05  29 ms/step
+step   200  ep   0.7  train 0.0031  val 0.0033  lr 5.50e-05  27 ms/step
+step   300  ep   1.1  train 0.0030  val 0.0034  lr 2.32e-05  26 ms/step
+step   400  ep   1.4  train 0.0033  val 0.0033  lr 1.00e-05  26 ms/step
+  [eval @ 400] solve 0.997 [0.988,0.999] n=600 | 2:134/134  3:133/133  4:133/133  5:133/134  6:65/66 | flat 573/575 boxed 25/25  reasons [('bad line cite', 1), ('rule check failed: IMPE', 1)]
+FINAL (full held-out) solve 0.993 [0.988,0.996] n=2111 | 2:399/400  3:397/400  4:407/408  5:423/426  6:470/477 | flat 1890/1898 boxed 206/213
+  len 2: 399/400 = 0.998  [0.986,1.000]
+  len 3: 397/400 = 0.993  [0.978,0.997]
+  len 4: 407/408 = 0.998  [0.986,1.000]
+  len 5: 423/426 = 0.993  [0.980,0.998]
+  len 6: 470/477 = 0.985  [0.970,0.993]
+wrote ckpts/stage2_nope_f0.25.pt in 0.3 min
+wrote logs/p_f0.25_rl_targets.jsonl (930 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.25.pt)
+frac=0.25 rl_targets vs data/long/rl_targets.jsonl
+  solved 94/930 = 0.1011  [0.0833,0.1221]
+  by gen_lines: 7:55/100 8:17/100 9:6/100 10:1/100 11:3/100 12:1/100 13:1/100 14:3/100 15:5/100 16:2/30
+  verified, by length WRITTEN: {4: 1, 5: 12, 6: 21, 7: 55, 8: 5}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 697, 'final formula is not the conclusion': 36, 'bad box cite': 28, 'rule check failed: ANDE1': 16}
+wrote logs/p_f0.25_transfer.jsonl (931 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.25.pt)
+frac=0.25 transfer vs data/long/transfer.jsonl
+  solved 78/931 = 0.0838  [0.0676,0.1033]
+  by gen_lines: 7:42/100 8:13/100 9:5/100 10:6/100 11:1/100 12:2/100 13:1/100 14:5/100 15:2/100 16:1/31
+  verified, by length WRITTEN: {4: 1, 5: 8, 6: 23, 7: 44, 8: 2}
+  ROBUST FRONTIER (>=5 distinct verified) = 7
+  failures: {'bad line cite': 704, 'final formula is not the conclusion': 44, 'rule check failed: ANDE1': 26, 'bad box cite': 25}
+wrote logs/p_f0.25_heldout.jsonl (2111 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.25.pt)
+frac=0.25 heldout vs data/heldout.jsonl
+  solved 2096/2111 = 0.9929  [0.9883,0.9957]
+  by gen_lines: 2:399/400 3:397/400 4:407/408 5:423/426 6:470/477
+  verified, by length WRITTEN: {2: 396, 3: 395, 4: 434, 5: 412, 6: 458, 7: 1}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'bad line cite': 6, 'bad box cite': 4, 'rule check failed: ANDE2': 2, "parse: expected line index, got '": 1}
+######## extra-frac 0.5 ########
+step   100  ep   0.4  train 0.0042  val 0.0036  lr 8.68e-05  29 ms/step
+step   200  ep   0.7  train 0.0047  val 0.0033  lr 5.50e-05  26 ms/step
+step   300  ep   1.1  train 0.0038  val 0.0034  lr 2.32e-05  25 ms/step
+step   400  ep   1.4  train 0.0044  val 0.0033  lr 1.00e-05  25 ms/step
+  [eval @ 400] solve 0.997 [0.988,0.999] n=600 | 2:134/134  3:133/133  4:133/133  5:133/134  6:65/66 | flat 573/575 boxed 25/25  reasons [('bad line cite', 1), ('rule check failed: IMPE', 1)]
+FINAL (full held-out) solve 0.991 [0.986,0.994] n=2111 | 2:400/400  3:397/400  4:406/408  5:422/426  6:467/477 | flat 1890/1898 boxed 202/213
+  len 2: 400/400 = 1.000  [0.990,1.000]
+  len 3: 397/400 = 0.993  [0.978,0.997]
+  len 4: 406/408 = 0.995  [0.982,0.999]
+  len 5: 422/426 = 0.991  [0.976,0.996]
+  len 6: 467/477 = 0.979  [0.962,0.989]
+wrote ckpts/stage2_nope_f0.5.pt in 0.3 min
+wrote logs/p_f0.5_rl_targets.jsonl (930 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.5.pt)
+frac=0.5 rl_targets vs data/long/rl_targets.jsonl
+  solved 100/930 = 0.1075  [0.0892,0.1291]
+  by gen_lines: 7:57/100 8:18/100 9:7/100 10:2/100 11:3/100 12:1/100 13:2/100 14:3/100 15:5/100 16:2/30
+  verified, by length WRITTEN: {4: 1, 5: 13, 6: 19, 7: 59, 8: 8}
+  ROBUST FRONTIER (>=5 distinct verified) = 8
+  failures: {'bad line cite': 688, 'final formula is not the conclusion': 37, 'bad box cite': 30, 'rule check failed: ANDE1': 22}
+wrote logs/p_f0.5_transfer.jsonl (931 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.5.pt)
+frac=0.5 transfer vs data/long/transfer.jsonl
+  solved 81/931 = 0.0870  [0.0706,0.1068]
+  by gen_lines: 7:41/100 8:15/100 9:6/100 10:6/100 11:1/100 12:3/100 13:1/100 14:5/100 15:2/100 16:1/31
+  verified, by length WRITTEN: {4: 1, 5: 8, 6: 26, 7: 42, 8: 4}
+  ROBUST FRONTIER (>=5 distinct verified) = 7
+  failures: {'bad line cite': 697, 'final formula is not the conclusion': 48, 'bad box cite': 27, 'rule check failed: ANDE1': 26}
+wrote logs/p_f0.5_heldout.jsonl (2111 proofs, temperature=0.0, ckpt=ckpts/stage2_nope_f0.5.pt)
+frac=0.5 heldout vs data/heldout.jsonl
+  solved 2092/2111 = 0.9910  [0.9860,0.9942]
+  by gen_lines: 2:400/400 3:397/400 4:406/408 5:422/426 6:467/477
+  verified, by length WRITTEN: {2: 397, 3: 396, 4: 433, 5: 413, 6: 452, 7: 1}
+  ROBUST FRONTIER (>=5 distinct verified) = 6
+  failures: {'bad line cite': 9, 'bad box cite': 6, 'rule check failed: ANDE2': 2, 'rule check failed: IMPE': 1}
+$ ssh -p 18593 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR root@103.207.149.153 "cd /workspace/nd && tar czf - ckpts logs data/harvest" | tar xzf - -C .
+pod nd-harvest-nope (qav1qghke3co20) LEFT RUNNING at $3.49/hr — reuse with --reuse nd-harvest-nope, kill with --kill nd-harvest-nope
