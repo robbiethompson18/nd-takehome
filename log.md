@@ -58,6 +58,29 @@ length-ordered file, so it covered lengths 2-4 only and read high, and made held
 *below* train loss. Fixed by striding, but after these two runs had finished — the loss and
 solve-rate-over-epochs charts still carry the caveat rather than being re-run.
 
+**~20:30 — Dead-line pruner.** A verified proof can carry lines nothing cites; the verifier only
+checks legality. Wrote `prune.py` (keep the dependency cone of the conclusion, renumber, re-verify)
+so every length can be reported written *and* pruned and the frontier can be judged on pruned
+proofs. Running it over the generated data found 3 dead lines in 8,875 proofs, all the same case:
+`( A v A ) ⊢ A` by ORE, where both boxes are identical and the decoder cites the second twice. Now
+rejected at generation; 0 dead lines since (37,748 cap-6 lines, 20,776 pool lines).
+
+**~21:00 — Data deep-dive.** `data_report.py` against the 36 reference proofs: our data is 27% ANDE
+vs the reference's 6%, AS 3% vs 27%, NEGI 0.1% vs 10%, box depth ≥2 in 0.1% of proofs vs 42%.
+Cause is not the generator's probabilities but the dedupe: buckets fill with *distinct theorems*, so
+a shape with unbounded filler variety (`A , ( ~ A ) ⊢ anything` is 12k theorems, 31% of length 4)
+crowds out shapes with few variants (modus tollens, 176). Also found 48 proofs with a premise
+nothing cites — a premise duplicating a box hypothesis, which the decoder ignores. Rejected at
+generation now; the 48 removed from the split in place.
+
+**~21:45 — Depth-2 augmentation.** A `nested` mode of the same generator: conclusion fixed to two
+stacked box-openers, introduction forced, depth ≥2 kept. 2,187 theorems (161/526/1,500 at lengths
+4/5/6; 4 and 5 are exhausted). Two arithmetic facts fell out: six lines is premise + AS + AS + one
+step + two closes, so every cap-6 nested proof has a vacuous box; and a used NEGI hypothesis at depth
+2 needs 8+ lines, so the augmentation is IMPI-only. It teaches the syntax of nesting, not nested
+reasoning. 5% went to held-out (which is otherwise frozen) so depth-2 has an in-distribution number.
+Stage 1 had already trained on the 142,118-record split; the Stage-2 rounds used the 144,146 one.
+
 ## Past the cap
 
 **~21:00 — The evaluation pools.** There was no set that could measure how far past 6 the model
@@ -120,6 +143,23 @@ including the loop's own, so `logs/pod_loop.log` reads as though the control wen
 **The frontier moved by one line.** 7 before, 8 after, on both pools. L − P = 1. The model has never
 written a nine-line proof, in any round, on either pool, which is the number we would most like to
 understand and do not.
+
+**~22:30 — Pruning wired into scoring.** `score_pool.py`, `harvest.py` and `merge_harvest.py` now
+report written and pruned lengths and dedupe found proofs on the pruned form. Rescoring every run:
+the frontier did not move anywhere (7 stays 7, 8 stays 8). Dead lines are 1-2% of lines, in 5-12% of
+verified proofs; about 8% of proofs written at 7+ lines fall below 7 after pruning; the rate does not
+compound across rounds (9% → 12% of harvested proofs). Training still uses the written proofs, so
+the round-over-round comparison is unchanged.
+
+## Test set
+
+**~23:10 — Scored once.** Greedy, one run per model per file, nothing inspected below the
+aggregate. Stage-1 NoPE: 45.3% short (121/267), 4.5% long (24/532). Round 3: 47.6% short
+(127/267), 4.3% long (23/532). All four differences sit inside the intervals. Three rounds of
+expert iteration that took RL targets from 4.5% to 14.5% and transfer from 4.9% to 10.4% moved
+the test set not at all — the harvest teaches more of what our generator already produces, and the
+test set's long theorems are shaped like the textbook, which our data is not (see the rule-mix gap
+above). This is the finding we would least like to have and the one most worth reporting.
 
 ## What we would do next
 

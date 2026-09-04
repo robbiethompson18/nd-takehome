@@ -13,9 +13,14 @@ builds the CSVs out of this repo).
 
 | number | value | source |
 | --- | --- | --- |
-| Train theorems | 142,118 | `data/train.jsonl` (`wc -l`), `data/meta.json` |
-| Held-out theorems | 2,000 (400 per length 2-6) | `data/heldout.jsonl`, `data/meta.json` |
-| Train by length | 7,169 / 16,813 / 39,383 / 39,269 / 39,484 for lengths 2-6 | `data_report.py data/train.jsonl` |
+| Train theorems, Stage-1 models | 142,118 | header line of `logs/stage1_*.log`; `data/meta.json` (before `rounds`) |
+| Held-out theorems, Stage-1 models | 2,000 (400 per length 2-6) | same |
+| Train / held-out on disk and for the Stage-2 rounds | 144,146 / 2,111 | `wc -l data/train.jsonl data/heldout.jsonl`; header line of `logs/pod_loop.log`. Differs from Stage 1 by +2,187 depth-2 theorems (5% to held-out) and −48 unused-premise records |
+| Train by length, Stage-1 | 7,169 / 16,813 / 39,383 / 39,269 / 39,484 for lengths 2-6 | `logs/make_data.log` |
+| Train by length, on disk | 7,169 / 16,813 / 39,536 / 39,743 / 40,885 | `data_report.py data/train.jsonl` |
+| Held-out by length, on disk | 400 / 400 / 408 / 426 / 477 | `data_report.py data/heldout.jsonl` |
+| Depth-2 theorems added | 2,187 (161 / 526 / 1,500 at lengths 4-6; 178 of the 1,500 reach depth 3); 2,168 train / 113 held-out after the 5% split | `data/meta.json` → `rounds[0]`; `data_report.py` |
+| Records removed for an uncited premise | 47 train, 1 held-out | `data/meta.json` → `dropped_unused_premise` |
 | Trivial share of train | 8.4% at length 2, ≤0.1% at 3-6, 0.5% overall | `data_report.py data/train.jsonl` |
 | Median body tokens | 30 / 38 / 38 / 47 / 50 for lengths 2-6 | `data_report.py data/train.jsonl` |
 | Held-out theorems that are a renaming or premise-reordering of a training theorem | 0, by construction | dedupe is on `key` = `gen.theorem_key`; asserted in `make_data.py` before writing |
@@ -89,11 +94,22 @@ Three rounds, NoPE only. Per-length tables in the writeup come from the `by gen_
 | Ablation: harvest fraction of batch | f=0.1 / 0.25 / 0.5 | `ckpts/stage2_nope_f*.pt`, `logs/p_f*_*.jsonl` |
 | Ablation: fine-tune without harvested proofs | 35/930 = 3.8% [2.7, 5.2] on RL targets | `score_pool.py --proofs logs/p_noharv_rl_targets.jsonl --pool data/long/rl_targets.jsonl` |
 
+## Test set (scored once, greedy)
+
+| number | value | source |
+| --- | --- | --- |
+| Stage-1 NoPE, `test_short` | 121/267 = 45.3% [39.5, 51.3] | `score_test.py logs/p_stage1_nope_test_short.jsonl` |
+| Stage-1 NoPE, `test_long` | 24/532 = 4.5% [3.1, 6.6] | `score_test.py logs/p_stage1_nope_test_long.jsonl` |
+| Final (round 3), `test_short` | 127/267 = 47.6% [41.7, 53.5] | `score_test.py logs/p_stage2_r3_test_short.jsonl` |
+| Final (round 3), `test_long` | 23/532 = 4.3% [2.9, 6.4] | `score_test.py logs/p_stage2_r3_test_long.jsonl` |
+| Pruning, written vs pruned frontier on every run | unchanged: 7/7 control, 8/8 rounds 1-3 on RL targets, 7/7 → 8/8 transfer | `score_pool.py` "ROBUST FRONTIER" line on each `logs/p_*.jsonl` |
+| Dead lines in model output | 1-2% of lines; 5-12% of verified proofs contain one; ~8% of 7+-line proofs fall below 7 after pruning | `score_pool.py` "dead lines" line; `prune.py` over `data/harvest/*.jsonl` |
+
 ## Numbers deliberately not reported
 
 - **Solve rate by "true" difficulty.** We have no shortest-proof labels; `gen_lines` is the
   generator's proof length, an upper bound that is honest to about length 8 and fiction beyond.
   Getting real ones needs a bounded prover, which we did not write. Every per-length rate past 8 in
   this file should be read as a property of the pool, not of the model.
-- **`targets/validation_36.jsonl` and the test sets.** Scored once early (7/36, 0/24 on the `>6`
-  bin, both models) and then left alone; not tuned against, and not part of any claim above.
+- **`targets/validation_36.jsonl`.** Scored once early (7/36, 0/24 on the `>6` bin, both Stage-1
+  models) and then left alone; not tuned against. The test sets were scored exactly once, above.

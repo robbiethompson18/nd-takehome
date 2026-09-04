@@ -60,7 +60,9 @@ python prune.py data/gen_2_6.jsonl                             # 0 dead lines in
 
 The split on disk additionally had 669 premise-reorderings and 48 unused-premise records removed
 in place after `key` and the unused-premise check were added to the generator; a fresh run
-produces neither. `data/meta.json` records all of it.
+produces neither. `data/meta.json` records all of it. Note the Stage-1 checkpoints were trained on
+the 142,118-record split (before the nested round and the 48 removals; see `logs/stage1_*.log`);
+the Stage-2 rounds fine-tuned on the 144,146-record split that is on disk.
 
 **Stage 1 training** (4.6 min NoPE, 6.2 min RoPE on the H100; ~45 ms/step at batch 1024):
 
