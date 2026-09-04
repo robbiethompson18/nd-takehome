@@ -14,6 +14,10 @@
 6. We were able to prove 5% of length 7-16 theorems in RL target pool on the first try!
 7. We ran 3 rounds of expert iteration and had proven a total of 62 / 78 / 91 theorems of length >6
    after each round.
+8. Test set, run once, greedy: Stage-1 model 45.3% on `test_short` (121/267, 95% CI 39.5-51.3) and
+   4.5% on `test_long` (24/532, CI 3.1-6.6); final model (round 3) 47.6% (127/267, CI 41.7-53.5) and
+   4.3% (23/532, CI 2.9-6.4). The differences are inside the intervals: expert iteration did not
+   move the test numbers.
 
 ## Decoder:
 
