@@ -2,9 +2,15 @@ __pycache__/
 *.pyc
 *.pt
 *.ckpt
+# ...except the submitted checkpoints: the exam asks for the ones prove.py needs
+!ckpts/*.pt
 .venv/
 venv/
 .DS_Store
+
+# direnv — .envrc.local holds secrets; this repo is shared, so ignore both
+.envrc
+.envrc.local
 
 # Local Claude config — machine/personal-specific, not shared
 CLAUDE.local.md

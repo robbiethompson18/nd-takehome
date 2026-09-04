@@ -8,6 +8,23 @@ Forked from https://github.com/chainik1125/nd-takehome (`upstream` remote). See 
 `AGENTS.md` at the repo root is a symlink to `CLAUDE.md` so Codex/other agents see the same
 instructions. Do not replace it with a separate file.
 
+I haven't thought about logic in a long time, define stuff more often than you'd think.
+
+## Data naming and canonicalization
+
+- `data/heldout.jsonl` is our own <= 6-line split (the README calls this the "held-out set").
+  Never call it "val": "validation" means the provided `targets/validation_36.jsonl` only.
+- Atoms are canonical: renamed so they first appear in the prompt as P, Q, R, S. The map is fixed
+  by the prompt alone. Rename on formula tuples or prompt/compact tokens (`ndtok.canonical_map`,
+  `rename_formula`, `rename_tokens`), never on spec text, where the rule `R` is spelled like the
+  atom `R`. `prove.py` must canonicalize the incoming prompt and invert the map on the output.
+- Held-out is frozen: never remove or regenerate its records. New data classes are added with
+  `make_data.py --append`, which puts 5% of the new theorems into held-out (so the class is
+  measurable in-distribution) and the rest into train. Records carry `round` (1 = original split).
+- Theorem identity is `key` (atom renaming + premise order folded, see `gen.theorem_key`). Every
+  record carries it. `gen.sample` dedupes on it at generation time, so a dataset never contains two
+  records with the same key; `make_data.py` splits on it. Never dedupe on `thm` or `prompt`.
+
 ## Notes
 
 Durable lessons about this repo go in git:
