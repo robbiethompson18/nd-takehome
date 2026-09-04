@@ -1,0 +1,30 @@
+{
+  "seed": 0,
+  "per_len": 40000,
+  "lo": 4,
+  "hi": 6,
+  "n_train": 144146,
+  "target_overlap_dropped": 5430,
+  "renamings_in_val": 0,
+  "sample_seconds": 900.0,
+  "key_dedupe_applied": true,
+  "train_dropped_reordering_of_heldout": 9,
+  "train_dropped_internal_reordering": 660,
+  "n_heldout": 2111,
+  "dropped_unused_premise": {
+    "train": 47,
+    "heldout": 1
+  },
+  "rounds": [
+    {
+      "seed": 7,
+      "per_len": 1500,
+      "seconds": 150.0,
+      "knobs": {},
+      "nested": true,
+      "added_train": 2075,
+      "added_heldout": 112,
+      "note": "round tags absent on disk for this round; 5% of all depth>=2 records moved to held-out afterwards"
+    }
+  ]
+}

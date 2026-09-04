@@ -1,0 +1,11 @@
+{
+  "seed": 1,
+  "lo": 7,
+  "hi": 16,
+  "per_len": 200,
+  "n_rl_targets": 930,
+  "n_transfer": 931,
+  "excluded_keys": 144879,
+  "seconds": 293.1,
+  "note": "gen_lines is an upper bound on the shortest proof, not a difficulty"
+}
