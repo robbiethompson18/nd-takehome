@@ -116,7 +116,9 @@ frontier (longest length with >= 5 distinct verified proofs) on both. Every `log
 - The tokenizer omits line numbers and PR lines from the model's vocabulary. Citations are resolved
   by `ndtok.decode` as an exact-match lookup on the model's own output, with no search and no
   verifier call. See the docstring at the top of `ndtok.py`.
-- The test set has not been scored at the time of writing; see the write-up for the final numbers.
+- Test set, scored once each with greedy decoding (outputs in `logs/p_stage1_nope_test_*.jsonl` and
+  `logs/p_stage2_r3_test_*.jsonl`, rescore with `python score_test.py <file>`): Stage-1 45.3% short /
+  4.5% long; final (round 3) 47.6% short / 4.3% long.
 
 ---
 
