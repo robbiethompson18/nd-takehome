@@ -1,3 +1,125 @@
+# ND take-home: submission
+
+Fork of [chainik1125/nd-takehome](https://github.com/chainik1125/nd-takehome). The original
+assignment text follows below the divider. This section is how to reproduce every number.
+
+## What is here
+
+| path | what |
+|---|---|
+| `prove.py` | the required sampling interface (same arguments and output schema as `submission_template/prove.py`; no verifier in the loop) |
+| `requirements.txt` | `torch`, `numpy`. Nothing else is needed to run `prove.py` |
+| `ckpts/stage1_nope.pt`, `ckpts/stage1_rope.pt` | Stage-1 models (3.17M params, NoPE / RoPE). `ckpts/frozen/` holds read-only copies; `.gitignore` drops those, they are byte-identical to the two above |
+| `ckpts/stage2_*.pt` | Stage-2 (expert iteration) models. `stage2_r3.pt` is the final model |
+| `data/train.jsonl`, `data/heldout.jsonl` | cap-6 training set and our held-out split, disjoint by theorem (`key`) |
+| `data/long/rl_targets.jsonl`, `data/long/transfer.jsonl` | 7-16 line pools: what RL samples against, and what it never sees |
+| `data/harvest/` | verified proofs the model wrote during expert iteration, per round |
+| `logs/` | every training log and every `prove.py` output the numbers come from |
+| `charts/` | figures for the write-up |
+| `ndtok.py` | model-facing proof format (no line indices, no PR lines, content-addressed citations) and the decoder back to `spec.md` |
+| `gen.py` | backward proof generator; `make_data.py` builds the split; `make_eval_pool.py` builds the 7-16 pools |
+| `prune.py` | dead-line pruner; every reported length is given written and pruned |
+| `train.py`, `model.py`, `harvest.py`, `merge_harvest.py`, `score_pool.py`, `pass_at_k.py` | training, sampling, scoring |
+| `pod.py` | RunPod driver used for the GPU runs (needs `RUNPOD_API_KEY`) |
+
+Terminology follows the assignment: **held-out** is our own <= 6 split, **validation** is
+`targets/validation_36`, **test** is `targets/test_*`, **RL targets** and **transfer** are our two
+7-16 line pools.
+
+## Setup
+
+```bash
+pip install -r requirements.txt        # or: uv sync
+python test_ndtok.py                   # round-trips all 57 provided proofs through the tokenizer
+```
+
+## Run the submitted model
+
+```bash
+python prove.py --ckpt ckpts/stage2_r3.pt --in targets/validation_36.jsonl --out out.jsonl --greedy
+python eval_targets.py --proofs out.jsonl
+python prove.py --ckpt ckpts/stage2_r3.pt --in targets/test_short_prompts.jsonl --out test_short.jsonl --greedy
+python score_test.py test_short.jsonl
+```
+
+36 theorems take ~2 s on an M4 Pro (CPU/MPS); 1,000 theorems take well under a minute on any GPU.
+
+## Reproduce
+
+All seeds are fixed. Hardware for the GPU steps: one H100 SXM on RunPod. CPU steps ran on a laptop.
+
+**Stage 1 data** (~15 min CPU for the split, ~3 min for the nested round, ~5 min for the pools):
+
+```bash
+python make_data.py --per-len 40000 --val-per-len 400 --seed 0 --seconds 900
+python make_data.py --append --nested --per-len 1500 --lo 4 --hi 6 --seed 7 --seconds 150
+python make_eval_pool.py --per-len 200 --seed 1 --seconds 300
+python data_report.py data/train.jsonl data/heldout.jsonl      # distributions in the write-up
+python prune.py data/gen_2_6.jsonl                             # 0 dead lines in generated proofs
+```
+
+The split on disk additionally had 669 premise-reorderings and 48 unused-premise records removed
+in place after `key` and the unused-premise check were added to the generator; a fresh run
+produces neither. `data/meta.json` records all of it.
+
+**Stage 1 training** (4.6 min NoPE, 6.2 min RoPE on the H100; ~45 ms/step at batch 1024):
+
+```bash
+python train.py --pos nope --batch 1024 --steps 6000 --lr 1e-3 --seed 0 --out ckpts/stage1_nope.pt
+python train.py --pos rope --batch 1024 --steps 6000 --lr 1e-3 --seed 0 --out ckpts/stage1_rope.pt
+```
+
+Held-out greedy solve rate by length is printed at the end (`logs/stage1_*.log`, "FINAL").
+
+**Stage 2, frozen-model control and harvest** (k = 32 samples per theorem at T = 1.0):
+
+```bash
+python harvest.py --ckpt ckpts/stage1_nope.pt --in data/long/rl_targets.jsonl --k 32 --temperature 1.0 --seed 0 --out data/harvest/nope.jsonl
+python pass_at_k.py --ckpt ckpts/stage1_nope.pt --in data/long/transfer.jsonl --k 32 --out logs/passk_stage1_transfer.json
+```
+
+`harvest.py` prints the frozen-model control: distinct theorems solved at this budget with no
+retraining. Only `rl_targets` is ever harvested; the script refuses the transfer, held-out,
+validation and test files.
+
+**Stage 2, expert iteration.** Each round fine-tunes from the frozen Stage-1 model with the
+harvested proofs mixed into half of every batch, then re-harvests with the new model
+(~20 s of training per round; harvesting dominates):
+
+```bash
+python train.py --init ckpts/stage1_nope.pt --extra data/harvest/all.jsonl --extra-frac 0.5 \
+    --lr 1e-4 --steps 400 --batch 512 --warmup 20 --out ckpts/stage2_r1.pt
+python harvest.py --ckpt ckpts/stage2_r1.pt --in data/long/rl_targets.jsonl --k 32 --temperature 1.0 --out data/harvest/r1.jsonl
+python merge_harvest.py data/harvest/nope.jsonl data/harvest/rope.jsonl data/harvest/r*.jsonl --out data/harvest/all.jsonl
+# repeat for r2, r3
+```
+
+Control: the same fine-tune with no harvested data (`--extra` omitted) is `ckpts/stage2_nope_noharvest.pt`.
+Mix-fraction sweep: `--extra-frac 0.1 / 0.25 / 0.5` on the round-0 harvest are `ckpts/stage2_nope_f*.pt`.
+
+**Scoring any model on any pool:**
+
+```bash
+python prove.py --ckpt ckpts/stage2_r3.pt --in data/long/transfer.jsonl --out logs/p_r3_transfer.jsonl --greedy --max-new 400
+python score_pool.py --proofs logs/p_r3_transfer.jsonl --pool data/long/transfer.jsonl
+```
+
+`score_pool.py` reports solve rate with a Wilson interval, the breakdown by generating length, the
+histogram of lengths actually written and the same after pruning dead lines, and the robust
+frontier (longest length with >= 5 distinct verified proofs) on both. Every `logs/p_*.jsonl` is a
+`prove.py` output that can be rescored this way.
+
+## Notes for the reader
+
+- Generating length (`gen_lines`) is an upper bound on a theorem's shortest proof, not a difficulty.
+  Lengths we report for model output are lengths actually written, with pruned lengths alongside.
+- The tokenizer omits line numbers and PR lines from the model's vocabulary. Citations are resolved
+  by `ndtok.decode` as an exact-match lookup on the model's own output, with no search and no
+  verifier call. See the docstring at the top of `ndtok.py`.
+- The test set has not been scored at the time of writing; see the write-up for the final numbers.
+
+---
+
 # Take-home: bootstrapping a natural-deduction prover past its training length
 
 
