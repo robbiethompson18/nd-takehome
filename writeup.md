@@ -152,7 +152,7 @@ needle on any imporant metric.
 
 ## GPUs:
 
-Just used Runpod H100s, cost me <$10
+Just used Runpod H100s, cost me <\$10
 
 ## Solve Rate For Pretrain-Only Model
 
