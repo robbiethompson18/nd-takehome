@@ -1,5 +1,7 @@
 # nd-takehome
 
+@~/.claude/personal-repo-rules.md
+
 Take-home: bootstrapping a natural-deduction prover past its training length
 
 Forked from https://github.com/chainik1125/nd-takehome (`upstream` remote). See `README.md` and
