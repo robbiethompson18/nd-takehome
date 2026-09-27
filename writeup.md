@@ -1,3 +1,6 @@
+I worked on this as a four hour take-home assignment for a SPAR application:
+[Natural deduction as a sandbox for capability emergence from RL](https://sparai.org/projects/f26/rec8qbsiN63iT3e8Z/)
+
 ## Executive Summary:
 
 1. We created a generator that provided ~150k unique theorems. Theorems generatored _backwards_, eg
