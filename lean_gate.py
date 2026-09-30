@@ -9,6 +9,10 @@ nd_verify-based judging downstream accepts exactly the samples that BOTH checker
 One theorem per line in a chunk file, `lean -DmaxErrors=...` so every error is reported; error line -> theorem.  A chunk
 whose lean process crashes / times out is split recursively; a single theorem that crashes is rejected.
 Log: $LEAN_GATE_LOG (default artifacts/lean_gate.jsonl), one json line per generate() call.
+
+Speed (ported from dan-pandori/nd-takehome `dan`, run lean-prefilter 2026-09-28): lean_prefilter.reject_reason drops texts
+Lean is certain to reject before Lean sees them ($LEAN_PREFILTER on|off|shadow); workers default to the cgroup CPU quota and
+each Lean runs `-j $LEAN_GATE_THREADS` (1), since Lean's default of one thread per visible core oversubscribes RunPod pods.
 """
 import os, re, sys, json, time, subprocess, tempfile, shutil, collections
 from concurrent.futures import ThreadPoolExecutor
@@ -17,7 +21,34 @@ from nd_verify import verify_text
 
 LEAN = os.path.expanduser('~/.elan/bin/lean')
 CHUNK = int(os.environ.get('LEAN_GATE_CHUNK', '400'))
-WORKERS = int(os.environ.get('LEAN_GATE_WORKERS', str(max(1, (os.cpu_count() or 2) // 2))))
+
+
+def cpu_quota():
+    """CPUs this process may actually use: the cgroup quota intersected with the affinity mask (RunPod pods show 96 cores
+    but grant ~7.6).  Copied from dan-pandori/nd-takehome `dan` lean_gate.py (run lean-prefilter, 2026-09-28)."""
+    try:
+        n = len(os.sched_getaffinity(0))
+    except AttributeError:
+        n = os.cpu_count() or 2
+    for fq, fp in (('/sys/fs/cgroup/cpu.max', None),                                            # cgroup v2
+                   ('/sys/fs/cgroup/cpu/cpu.cfs_quota_us', '/sys/fs/cgroup/cpu/cpu.cfs_period_us')):  # v1 (RunPod A40s)
+        try:
+            if fp is None:
+                q, per = open(fq).read().split()[:2]
+            else:
+                q, per = open(fq).read().strip(), open(fp).read().strip()
+            if q not in ('max', '-1'):
+                n = min(n, max(1, int(int(q) / int(per))))
+            break
+        except (OSError, ValueError):
+            continue
+    return n
+
+
+WORKERS = int(os.environ.get('LEAN_GATE_WORKERS', '0')) or cpu_quota()
+THREADS = os.environ.get('LEAN_GATE_THREADS', '1')      # `lean -j N`; '' = Lean's default (a thread per hardware thread)
+PREFILTER = os.environ.get('LEAN_PREFILTER', 'on')      # on | off | shadow (lean_prefilter.py)
+assert PREFILTER in ('on', 'off', 'shadow'), PREFILTER
 ERR = re.compile(r'^[^\n]*?:(\d+):\d+: error', re.M)
 
 
@@ -28,7 +59,7 @@ def _run(lines, workdir, tag, depth=0):
         f.write('set_option linter.unusedVariables false\n' + '\n'.join(lines) + '\n')
     t0 = time.time()
     try:
-        p = subprocess.run([LEAN, '-DmaxErrors=100000000', fn], capture_output=True, text=True, timeout=60 + 2 * len(lines))
+        p = subprocess.run([LEAN] + (['-j', THREADS] if THREADS else []) + ['-DmaxErrors=100000000', fn], capture_output=True, text=True, timeout=60 + 2 * len(lines))
         o = p.stdout + p.stderr; rc = p.returncode
     except subprocess.TimeoutExpired:
         o = ''; rc = -9
@@ -67,7 +98,22 @@ def gate(tok, prompts, nd_proofs, texts):
         if tx is not None and not nd.startswith('LEANPARSE'):
             keys.setdefault((p, tx), nd)
     items = list(keys.items())
-    lean_ok, wall, cpu = lean_check([(tok.statement(p), tx) for (p, tx), _ in items])
+    # reject-only pre-filter: 'on' sends only the texts it passes to Lean, 'shadow' sends everything and logs any text
+    # it rejects that Lean accepts (a filter bug) to <log>.filterbug.jsonl
+    t0 = time.time()
+    filt = [None] * len(items)
+    if PREFILTER != 'off':
+        from lean_prefilter import reject_reason
+        filt = [reject_reason(tok.statement(p), tx) for (p, tx), _ in items]
+    filter_s = time.time() - t0
+    to_lean = [k for k, r in enumerate(filt) if r is None or PREFILTER == 'shadow']
+    ok_sent, wall, cpu = lean_check([(tok.statement(items[k][0][0]), items[k][0][1]) for k in to_lean])
+    lean_ok = [False] * len(items)
+    for k, o in zip(to_lean, ok_sent):
+        lean_ok[k] = o
+    bugs = [k for k in range(len(items)) if filt[k] is not None and lean_ok[k]]
+    if PREFILTER == 'on':
+        lean_ok = [o and filt[k] is None for k, o in enumerate(lean_ok)]
     t0 = time.time()
     nd_ok = [verify_text(p + ' ' + nd)[0] for (p, tx), nd in items]
     t_nd = time.time() - t0
@@ -78,16 +124,26 @@ def gate(tok, prompts, nd_proofs, texts):
     parse_reasons = collections.Counter(nd[10:] for nd in nd_proofs if nd.startswith('LEANPARSE'))
     rec = {'utc': time.strftime('%FT%TZ', time.gmtime()), 'samples': len(prompts), 'parse_fail': n_parse, 'distinct_checked': len(items),
            'both_ok': tab[(True, True)], 'nd_ok_lean_rej': tab[(True, False)], 'nd_rej_lean_ok': tab[(False, True)], 'both_rej': tab[(False, False)],
-           'parse_reasons': dict(parse_reasons.most_common()), 'lean_wall_s': wall, 'lean_proc_s': cpu, 'nd_verify_s': t_nd, 'workers': WORKERS, 'chunk': CHUNK}
+           'parse_reasons': dict(parse_reasons.most_common()), 'lean_wall_s': wall, 'lean_proc_s': cpu, 'nd_verify_s': t_nd, 'workers': WORKERS, 'chunk': CHUNK,
+           'threads': THREADS, 'prefilter': PREFILTER, 'lean_sent': len(to_lean), 'filter_rej': sum(r is not None for r in filt),
+           'filter_reasons': dict(collections.Counter(r for r in filt if r is not None).most_common()), 'filter_s': filter_s,
+           'filter_false_rej': len(bugs) if PREFILTER == 'shadow' else None}
     os.makedirs(os.path.dirname(logfn) or '.', exist_ok=True)
     with open(logfn, 'a') as f:
         f.write(json.dumps(rec) + '\n')
+    if bugs:
+        with open(logfn.replace('.jsonl', '') + '.filterbug.jsonl', 'a') as f:
+            for k in bugs:
+                (p, tx), nd = items[k]
+                f.write(json.dumps({'prompt': p, 'lean_text': tx, 'filter_reason': filt[k]}, ensure_ascii=False) + '\n')
+        print(f'[lean_gate] PREFILTER BUG: {len(bugs)} texts the filter rejects are accepted by Lean', flush=True)
     if dis:
         with open(logfn.replace('.jsonl', '') + '.disagree.jsonl', 'a') as f:
             for d in dis:
                 f.write(json.dumps(d, ensure_ascii=False) + '\n')
     print(f'[lean_gate] {len(prompts)} samples, parse-fail {n_parse}, distinct checked {len(items)}: both ok {tab[(True, True)]}, nd-only {tab[(True, False)]}, '
-          f'lean-only {tab[(False, True)]}, both rej {tab[(False, False)]}; lean {wall:.1f}s wall ({cpu:.1f}s proc, {WORKERS} workers), nd_verify {t_nd:.1f}s', flush=True)
+          f'lean-only {tab[(False, True)]}, both rej {tab[(False, False)]}; lean {wall:.1f}s wall ({cpu:.1f}s proc, {WORKERS} workers, -j {THREADS or "default"}) on {len(to_lean)} texts, '
+          f'prefilter={PREFILTER} rejected {sum(r is not None for r in filt)} in {filter_s:.1f}s; nd_verify {t_nd:.1f}s', flush=True)
     ndv = {k: a for (k, _), a in zip(items, nd_ok)}
     out = []
     for p, nd, tx in zip(prompts, nd_proofs, texts):
